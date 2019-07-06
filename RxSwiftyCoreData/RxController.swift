@@ -13,6 +13,7 @@ import SwiftyCoreData
 
 var CompletionSignal: Void { return () }
 
+// TODO: Add documentation for each api method
 extension SCDController.Reactive {
     
     public func fetchAll(

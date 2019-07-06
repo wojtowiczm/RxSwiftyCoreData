@@ -6,6 +6,7 @@
 //  Copyright © 2019 Michał Wójtowicz. All rights reserved.
 //
 
+import CoreData
 import SwiftyCoreData
 
 // Cannot use `ReactiveCompatible` since SCDController is generic
@@ -13,7 +14,7 @@ import SwiftyCoreData
 
 extension SCDController {
     
-    struct Reactive<O, MO> where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible & NSManagedObject {
+    public struct Reactive<O, MO> where Object: SCDManagedObjectConvertible, ManagedObject: SCDObjectConvertible & NSManagedObject {
         
         let base: SCDController<Object, ManagedObject>
         
@@ -22,7 +23,7 @@ extension SCDController {
         }
     }
     
-    var rx: Reactive<Object, ManagedObject> {
+    public var rx: Reactive<Object, ManagedObject> {
         return Reactive(self)
     }
     
