@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		D34627F5DAC0FC36A63205B8 /* Pods_RxSwiftyCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9E3EF79D5F0A0193E9DD087 /* Pods_RxSwiftyCoreData.framework */; };
 		FF7D353F22D152AC005664B8 /* RxSwiftyCoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = FF7D353D22D152AC005664B8 /* RxSwiftyCoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FF7D354622D1534E005664B8 /* RxController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7D354522D1534E005664B8 /* RxController.swift */; };
+		FF7D354622D1534E005664B8 /* RxSCDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7D354522D1534E005664B8 /* RxSCDController.swift */; };
 		FF7D354822D15C16005664B8 /* RxWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7D354722D15C16005664B8 /* RxWrapper.swift */; };
 /* End PBXBuildFile section */
 
@@ -20,7 +20,7 @@
 		FF7D353A22D152AC005664B8 /* RxSwiftyCoreData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwiftyCoreData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF7D353D22D152AC005664B8 /* RxSwiftyCoreData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RxSwiftyCoreData.h; sourceTree = "<group>"; };
 		FF7D353E22D152AC005664B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FF7D354522D1534E005664B8 /* RxController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxController.swift; sourceTree = "<group>"; };
+		FF7D354522D1534E005664B8 /* RxSCDController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSCDController.swift; sourceTree = "<group>"; };
 		FF7D354722D15C16005664B8 /* RxWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,7 +76,7 @@
 			children = (
 				FF7D353D22D152AC005664B8 /* RxSwiftyCoreData.h */,
 				FF7D353E22D152AC005664B8 /* Info.plist */,
-				FF7D354522D1534E005664B8 /* RxController.swift */,
+				FF7D354522D1534E005664B8 /* RxSCDController.swift */,
 				FF7D354722D15C16005664B8 /* RxWrapper.swift */,
 			);
 			path = RxSwiftyCoreData;
@@ -187,7 +187,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF7D354622D1534E005664B8 /* RxController.swift in Sources */,
+				FF7D354622D1534E005664B8 /* RxSCDController.swift in Sources */,
 				FF7D354822D15C16005664B8 /* RxWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -31,14 +31,6 @@ extension SCDController.Reactive {
     public func fetchFirst(withPredicate predicate: NSPredicate? = nil) -> Observable<[Object]> {
         return fetchAll(withPredicate: predicate, fetchLimit: 1)
     }
-    
-    func foo() -> Single<[Object]> {
-        return Single.create { single in
-            self.base.fetchAll { objects in single(.success(objects))}
-            return Disposables.create()
-            
-        }
-    }
 
     public func countAll(withPredicate predicate: NSPredicate? = nil) -> Observable<Int> {
         return Observable.create { observer in
