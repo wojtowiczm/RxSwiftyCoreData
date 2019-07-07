@@ -10,7 +10,7 @@ PODS:
 DEPENDENCIES:
   - RxCocoa
   - RxSwift
-  - SwiftyCoreData (from `https://github.com/wojtowiczm/SwiftyCoreData.git`)
+  - SwiftyCoreData (from `https://github.com/wojtowiczm/SwiftyCoreData.git`, branch `develop`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -20,11 +20,12 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   SwiftyCoreData:
+    :branch: develop
     :git: https://github.com/wojtowiczm/SwiftyCoreData.git
 
 CHECKOUT OPTIONS:
   SwiftyCoreData:
-    :commit: ec69fd823d648daea983ff205310781537b5b445
+    :commit: c550471d255b236a80d8a8881eac7ca046eba381
     :git: https://github.com/wojtowiczm/SwiftyCoreData.git
 
 SPEC CHECKSUMS:
@@ -33,6 +34,6 @@ SPEC CHECKSUMS:
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
   SwiftyCoreData: 4bef29d29aedfb25e91f40cd288eabfa51ab3ef7
 
-PODFILE CHECKSUM: 2ae2c031604f3bea5c9fbce79e1feaac7990b1cc
+PODFILE CHECKSUM: b231146e41ce5af34d9c8cc53d7536902b996553
 
 COCOAPODS: 1.7.2

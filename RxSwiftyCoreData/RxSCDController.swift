@@ -13,7 +13,14 @@ import SwiftyCoreData
 
 // TODO: Add documentation for each api method
 extension SCDController.Reactive {
+    // MARK: - Read
     
+    /// Fetches objects stored in DataBase
+    ///
+    /// - Parameters:
+    ///   - withPredicate: `NSPredicate` - A definition of logical conditions used to constrain a search either for a fetch or for in-memory filtering.
+    ///    - sortDescriptors: An immutable description of how to order a collection of objects based on a property common to all the objects.
+    ///  returns
     public func fetchAll(
         withPredicate predicate: NSPredicate? = nil,
         sortDescriptors: [NSSortDescriptor]? = nil,
@@ -23,6 +30,7 @@ extension SCDController.Reactive {
             withPredicate: predicate,
             sortDescriptors: sortDescriptors,
             fetchLimit: fetchLimit,
+            failure: observer.onError,
             completion: observer.onNext)
             return Disposables.create()
         }
@@ -36,6 +44,7 @@ extension SCDController.Reactive {
         return Observable.create { observer in
             self.base.countAll(
                 withPredicate: predicate,
+                failure: observer.onError,
                 completion: observer.onNext)
             return Disposables.create()
         }
@@ -44,18 +53,28 @@ extension SCDController.Reactive {
     
     public func save(objects: [Object]) -> Completable {
         return Completable.create { observer in
-            self.base.save(objects: objects) {
+            self.base.save(
+            objects: objects,
+            failure: { error in
+                observer(.error(error))
+            },
+            completion: {
                 observer(.completed)
-            }
+            })
             return Disposables.create()
         }
     }
     
     public func save(_ object: Object) -> Completable {
         return Completable.create { observer in
-            self.base.save(object) {
-                observer(.completed)
-            }
+            self.base.save(
+                object,
+                failure: { error in
+                    observer(.error(error))
+            },
+                completion: {
+                    observer(.completed)
+            })
             return Disposables.create()
         }
     }
@@ -63,18 +82,27 @@ extension SCDController.Reactive {
     public func deleteAll(withPredicate predicate: NSPredicate? = nil) -> Completable {
         return Completable.create { observer in
             self.base.deleteAll(
-            withPredicate: predicate) {
-                observer(.completed)
-            }
+                withPredicate: predicate,
+                failure: { error in
+                    observer(.error(error))
+            },
+                completion: {
+                    observer(.completed)
+            })
             return Disposables.create()
         }
     }
     
     public func delete(_ object: Object) -> Completable {
         return Completable.create { observer in
-            self.base.delete(object) {
-                observer(.completed)
-            }
+            self.base.delete(
+                object,
+                failure: { error in
+                    observer(.error(error))
+            },
+                completion: {
+                    observer(.completed)
+            })
             return Disposables.create()
         }
     }

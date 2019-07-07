@@ -7,6 +7,6 @@ target 'RxSwiftyCoreData' do
 
   pod 'RxSwift'
   pod 'RxCocoa'
-  pod 'SwiftyCoreData', :git => 'https://github.com/wojtowiczm/SwiftyCoreData.git'
+  pod 'SwiftyCoreData', :git => 'https://github.com/wojtowiczm/SwiftyCoreData.git', :branch => 'develop'
 
 end
