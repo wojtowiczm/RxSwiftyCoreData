@@ -11,8 +11,6 @@ import RxCocoa
 import CoreData
 import SwiftyCoreData
 
-var CompletionSignal: Void { return () }
-
 // TODO: Add documentation for each api method
 extension SCDController.Reactive {
     
@@ -33,6 +31,14 @@ extension SCDController.Reactive {
     public func fetchFirst(withPredicate predicate: NSPredicate? = nil) -> Observable<[Object]> {
         return fetchAll(withPredicate: predicate, fetchLimit: 1)
     }
+    
+    func foo() -> Single<[Object]> {
+        return Single.create { single in
+            self.base.fetchAll { objects in single(.success(objects))}
+            return Disposables.create()
+            
+        }
+    }
 
     public func countAll(withPredicate predicate: NSPredicate? = nil) -> Observable<Int> {
         return Observable.create { observer in
@@ -44,45 +50,45 @@ extension SCDController.Reactive {
         
     }
     
-    public func save(objects: [Object]) -> Observable<Void> {
-        return Observable.create { observer in
+    public func save(objects: [Object]) -> Completable {
+        return Completable.create { observer in
             self.base.save(objects: objects) {
-                observer.onNext(CompletionSignal)
+                observer(.completed)
             }
             return Disposables.create()
         }
     }
     
-    public func save(_ object: Object) -> Observable<Void> {
-        return Observable.create { observer in
+    public func save(_ object: Object) -> Completable {
+        return Completable.create { observer in
             self.base.save(object) {
-                observer.onNext(CompletionSignal)
+                observer(.completed)
             }
             return Disposables.create()
         }
     }
     
-    public func deleteAll(withPredicate predicate: NSPredicate? = nil) -> Observable<Void> {
-        return Observable.create { observer in
+    public func deleteAll(withPredicate predicate: NSPredicate? = nil) -> Completable {
+        return Completable.create { observer in
             self.base.deleteAll(
             withPredicate: predicate) {
-                observer.onNext(CompletionSignal)
+                observer(.completed)
             }
             return Disposables.create()
         }
     }
     
-    public func delete(_ object: Object) -> Observable<Void> {
-        return Observable.create { observer in
+    public func delete(_ object: Object) -> Completable {
+        return Completable.create { observer in
             self.base.delete(object) {
-                observer.onNext(())
+                observer(.completed)
             }
             return Disposables.create()
         }
     }
     
-    public func update(_ object: Object) -> Observable<Void> {
-        return Observable.merge([delete(object), save(object)])
+    public func update(_ object: Object) -> Completable {
+        return Completable.zip([delete(object), save(object)])
     }
 
 }
